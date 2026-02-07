@@ -1,5 +1,7 @@
 import { GAME_CONFIG, PLAYER_CONFIG, AI_CONFIG, KITE_COLORS } from './constants';
 import { clamp, normalizeAngle, randomChoice, random, inBounds } from './helpers';
+import { drawPakistaniKite, BASANT_COLORS } from './KiteDesigns';
+
 
 export class Kite {
   constructor(x, y, isPlayer = false) {
@@ -10,6 +12,8 @@ export class Kite {
     // Visual properties
     this.size = isPlayer ? PLAYER_CONFIG.SIZE : AI_CONFIG.SIZE;
     this.color = isPlayer ? PLAYER_CONFIG.COLOR : randomChoice(KITE_COLORS);
+   
+    // this.color = isPlayer ? PLAYER_CONFIG.COLOR : randomChoice(BASANT_COLORS);
     
     // Physics
     this.vx = 0;
@@ -212,6 +216,49 @@ export class Kite {
     ctx.shadowBlur = 0;
     ctx.globalAlpha = 1;
   }
+
+//   draw(ctx) {
+//   const alpha = this.alive ? 1 : (1 - this.fadeOut);
+  
+//   // Draw trail (same as before)
+//   if (this.trail.length > 1) {
+//     ctx.strokeStyle = this.color;
+//     ctx.lineWidth = 2;
+//     ctx.globalAlpha = alpha * 0.5;
+    
+//     ctx.beginPath();
+//     ctx.moveTo(this.trail[0].x, this.trail[0].y);
+    
+//     for (let i = 1; i < this.trail.length; i++) {
+//       const point = this.trail[i];
+//       ctx.globalAlpha = alpha * point.alpha * 0.5;
+//       ctx.lineTo(point.x, point.y);
+//     }
+    
+//     ctx.stroke();
+//     ctx.globalAlpha = 1;
+//   }
+  
+//   // Draw string (دور - Dor)
+//   ctx.strokeStyle = this.color;
+//   ctx.lineWidth = 2;
+//   ctx.globalAlpha = alpha * 0.6;
+//   ctx.beginPath();
+//   ctx.moveTo(this.x, this.y);
+//   ctx.lineTo(this.x, this.y + this.size * 2.5);
+//   ctx.stroke();
+//   ctx.globalAlpha = 1;
+  
+//   // Use Pakistani design
+//   ctx.globalAlpha = alpha;
+//   ctx.shadowColor = this.color;
+//   ctx.shadowBlur = this.isPlayer ? 15 : 10;
+  
+//   drawPakistaniKite(ctx, this.x, this.y, this.size, this.color, this.angle);
+  
+//   ctx.shadowBlur = 0;
+//   ctx.globalAlpha = 1;
+// }
   
   checkCollision(other) {
     if (!this.alive || !other.alive) return false;
