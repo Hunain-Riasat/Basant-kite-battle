@@ -1,0 +1,230 @@
+.gameover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(42, 31, 58, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  animation: fadeIn 0.5s ease;
+}
+
+.gameover-content {
+  text-align: center;
+  padding: 40px;
+  max-width: 500px;
+}
+
+.new-record {
+  margin-bottom: 20px;
+  animation: recordAppear 0.8s ease;
+}
+
+@keyframes recordAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.trophy-icon {
+  font-size: 60px;
+  margin-bottom: 10px;
+  animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.record-text {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  background: linear-gradient(90deg, var(--neon-yellow), var(--neon-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 20px var(--neon-yellow);
+}
+
+.gameover-title {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 900;
+  color: var(--danger);
+  text-shadow: 
+    0 0 20px var(--danger),
+    0 0 40px var(--danger);
+  letter-spacing: 8px;
+  margin: 0 0 40px 0;
+}
+
+.score-display {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.final-score,
+.high-score {
+  padding: 20px 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  min-width: 180px;
+}
+
+.final-score {
+  border-color: rgba(255, 0, 128, 0.3);
+  background: rgba(255, 0, 128, 0.05);
+}
+
+.high-score {
+  border-color: rgba(0, 255, 255, 0.3);
+  background: rgba(0, 255, 255, 0.05);
+}
+
+.score-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.score-value {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--neon-pink);
+  text-shadow: 0 0 15px var(--neon-pink);
+}
+
+.score-value.high {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.gameover-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.gameover-button {
+  padding: 16px 50px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.play-again-button {
+  background: linear-gradient(135deg, var(--neon-pink), var(--neon-orange));
+  color: var(--text-primary);
+  box-shadow: 
+    0 0 20px rgba(255, 0, 128, 0.5),
+    0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.play-again-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 0 30px rgba(255, 0, 128, 0.8),
+    0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.menu-button {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: var(--text-secondary);
+}
+
+.menu-button:hover {
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.gameover-message {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 300;
+  font-style: italic;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .gameover-content {
+    padding: 20px;
+  }
+  
+  .trophy-icon {
+    font-size: 50px;
+  }
+  
+  .record-text {
+    font-size: 20px;
+  }
+  
+  .gameover-title {
+    font-size: 48px;
+  }
+  
+  .score-display {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .final-score,
+  .high-score {
+    min-width: auto;
+    padding: 15px 25px;
+  }
+  
+  .score-value {
+    font-size: 28px;
+  }
+  
+  .gameover-button {
+    font-size: 18px;
+    padding: 14px 40px;
+  }
+  
+  .gameover-message {
+    font-size: 14px;
+  }
+}

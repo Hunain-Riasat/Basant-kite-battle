@@ -1,0 +1,297 @@
+.menu-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(26, 31, 58, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.menu-content {
+  text-align: center;
+  max-width: 600px;
+  padding: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.menu-header {
+  margin-bottom: 30px;
+}
+
+.kite-icon {
+  font-size: 80px;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 30px var(--neon-cyan);
+  animation: float 3s ease-in-out infinite;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.game-title {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--text-primary);
+  text-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.5),
+    0 0 40px rgba(0, 255, 255, 0.3);
+  letter-spacing: 4px;
+  margin: 0;
+}
+
+.title-highlight {
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: glow 2s ease-in-out infinite;
+}
+
+.menu-description {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+.high-score-display {
+  margin-bottom: 30px;
+  padding: 15px 30px;
+  background: rgba(0, 255, 255, 0.05);
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.high-score-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+}
+
+.high-score-value {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.play-button {
+  position: relative;
+  padding: 18px 60px;
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--neon-pink), var(--neon-orange));
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin-bottom: 40px;
+  box-shadow: 
+    0 0 20px rgba(255, 0, 128, 0.5),
+    0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.play-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 0 30px rgba(255, 0, 128, 0.8),
+    0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.play-button:active {
+  transform: translateY(-1px);
+}
+
+.button-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.play-button:hover .button-glow {
+  left: 100%;
+}
+
+.button-text {
+  position: relative;
+  z-index: 1;
+}
+
+.menu-instructions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.instruction-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+.instruction-key {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 10px var(--neon-cyan);
+  min-width: 60px;
+  text-align: center;
+}
+
+.instruction-or {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.instruction-text {
+  font-weight: 300;
+}
+
+.game-tips {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tip {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-align: left;
+}
+
+/* Floating background kites */
+.menu-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0.2;
+}
+
+.floating-kite {
+  position: absolute;
+  font-size: 60px;
+  animation: floatAround 20s ease-in-out infinite;
+}
+
+.kite-1 {
+  top: 20%;
+  left: 10%;
+  color: var(--neon-pink);
+  animation-delay: 0s;
+}
+
+.kite-2 {
+  top: 60%;
+  right: 15%;
+  color: var(--neon-green);
+  animation-delay: 7s;
+}
+
+.kite-3 {
+  bottom: 15%;
+  left: 20%;
+  color: var(--neon-purple);
+  animation-delay: 14s;
+}
+
+@keyframes floatAround {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(30px, -30px) rotate(10deg);
+  }
+  50% {
+    transform: translate(0, -50px) rotate(-5deg);
+  }
+  75% {
+    transform: translate(-30px, -30px) rotate(10deg);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .menu-content {
+    padding: 20px;
+  }
+  
+  .kite-icon {
+    font-size: 60px;
+  }
+  
+  .game-title {
+    font-size: 48px;
+  }
+  
+  .menu-description {
+    font-size: 16px;
+  }
+  
+  .high-score-value {
+    font-size: 28px;
+  }
+  
+  .play-button {
+    font-size: 20px;
+    padding: 15px 50px;
+  }
+  
+  .instruction-row {
+    font-size: 14px;
+  }
+  
+  .instruction-key {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+  
+  .tip {
+    font-size: 12px;
+  }
+}
