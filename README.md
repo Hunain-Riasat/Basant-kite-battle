@@ -2,7 +2,6 @@
 
 An addictive arcade-style kite flying game inspired by the traditional Basant kite-fighting festival. Control your kite through vibrant skies, cut opponent kites, build combos, and chase high scores!
 
-![Basant Kite Battle](./screenshot.png)
 
 ## 🎮 Game Features
 
@@ -192,10 +191,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
+Muhammad Hunain Riasat 
+Email: hunainriasat@gmail.com
 
-Project Link: [https://github.com/yourusername/basant-kite-battle](https://github.com/yourusername/basant-kite-battle)
 
----
+Made with 🪁 and JavaScript by M Hunain Riasat
 
-Made with 🪁 and JavaScript
+Copyright © 2025 Muhammad Hunain Riasat  
+All rights reserved.
