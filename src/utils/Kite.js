@@ -173,14 +173,54 @@ export class Kite {
     }
     
     // Draw string (line from kite to below)
-    ctx.strokeStyle = this.color;
-    ctx.lineWidth = 1.5;
-    ctx.globalAlpha = alpha * 0.4;
-    ctx.beginPath();
-    ctx.moveTo(this.x, this.y);
-    ctx.lineTo(this.x, this.y + this.size * 2);
-    ctx.stroke();
-    ctx.globalAlpha = 1;
+    // Draw long string (گانجا - Ganja) extending to bottom like traditional Basant
+  
+  // Calculate string end point - goes to bottom of screen
+  const stringEndY = GAME_CONFIG.HEIGHT; // String reaches bottom
+  
+  // Add horizontal sway based on wind and movement
+  const swayTime = performance.now() / 800 + this.x / 100;
+  const baseSwayAmount = Math.sin(swayTime) * 15;
+  
+  // String moves with kite movement (physics-based drag)
+  const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+  const movementDrag = speed > 0.5 ? (this.vx * 3) : 0;
+  
+  const stringEndX = this.x + baseSwayAmount + movementDrag;
+  
+  // Draw the گانجا (string) - long vertical line with curve
+  ctx.save();
+  ctx.strokeStyle = this.color;
+  ctx.lineWidth = 2;
+  ctx.globalAlpha = alpha * 0.6;
+  ctx.lineCap = 'round';
+  
+  // Optional: Add subtle shadow for depth
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
+  ctx.shadowBlur = 2;
+  ctx.shadowOffsetX = 1;
+  
+  // Draw curved string using quadratic curve
+  ctx.beginPath();
+  ctx.moveTo(this.x, this.y);
+  
+  // Control point for curve (creates natural sway)
+  const controlPointX = (this.x + stringEndX) / 2 + baseSwayAmount * 0.5;
+  const controlPointY = this.y + (stringEndY - this.y) * 0.6;
+  
+  ctx.quadraticCurveTo(controlPointX, controlPointY, stringEndX, stringEndY);
+  ctx.stroke();
+  
+  // Draw attachment point at kite
+  ctx.shadowBlur = 0;
+  ctx.fillStyle = this.color;
+  ctx.globalAlpha = alpha * 0.8;
+  ctx.beginPath();
+  ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+  ctx.fill();
+  
+  ctx.restore();
+  ctx.globalAlpha = 1;
     
     // Draw kite (diamond shape)
     ctx.save();
@@ -217,48 +257,7 @@ export class Kite {
     ctx.globalAlpha = 1;
   }
 
-//   draw(ctx) {
-//   const alpha = this.alive ? 1 : (1 - this.fadeOut);
-  
-//   // Draw trail (same as before)
-//   if (this.trail.length > 1) {
-//     ctx.strokeStyle = this.color;
-//     ctx.lineWidth = 2;
-//     ctx.globalAlpha = alpha * 0.5;
-    
-//     ctx.beginPath();
-//     ctx.moveTo(this.trail[0].x, this.trail[0].y);
-    
-//     for (let i = 1; i < this.trail.length; i++) {
-//       const point = this.trail[i];
-//       ctx.globalAlpha = alpha * point.alpha * 0.5;
-//       ctx.lineTo(point.x, point.y);
-//     }
-    
-//     ctx.stroke();
-//     ctx.globalAlpha = 1;
-//   }
-  
-//   // Draw string (دور - Dor)
-//   ctx.strokeStyle = this.color;
-//   ctx.lineWidth = 2;
-//   ctx.globalAlpha = alpha * 0.6;
-//   ctx.beginPath();
-//   ctx.moveTo(this.x, this.y);
-//   ctx.lineTo(this.x, this.y + this.size * 2.5);
-//   ctx.stroke();
-//   ctx.globalAlpha = 1;
-  
-//   // Use Pakistani design
-//   ctx.globalAlpha = alpha;
-//   ctx.shadowColor = this.color;
-//   ctx.shadowBlur = this.isPlayer ? 15 : 10;
-  
-//   drawPakistaniKite(ctx, this.x, this.y, this.size, this.color, this.angle);
-  
-//   ctx.shadowBlur = 0;
-//   ctx.globalAlpha = 1;
-// }
+
   
   checkCollision(other) {
     if (!this.alive || !other.alive) return false;
