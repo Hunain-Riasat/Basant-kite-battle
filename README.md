@@ -192,10 +192,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📧 Contact
 
 Muhammad Hunain Riasat 
+
 Email: hunainriasat@gmail.com
 
 
+
+
+
 Made with 🪁 and JavaScript by M Hunain Riasat
+
+
 
 Copyright © 2025 Muhammad Hunain Riasat  
 All rights reserved.
