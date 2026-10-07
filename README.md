@@ -2,6 +2,7 @@
 
 An addictive arcade-style kite flying game inspired by the traditional Basant kite-fighting festival. Control your kite through vibrant skies, cut opponent kites, build combos, and chase high scores!
 
+**[Wanna Play with it right now, Here it is](https://kite-game.netlify.app/)**
 
 ## 🎮 Game Features
 
